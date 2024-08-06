@@ -1,11 +1,22 @@
 "use client";
 
+import Arrows from "@/components/widgtes/arrows";
 import SliderItem from "@/components/widgtes/slider-item";
 import { useState } from "react";
 
 export default function Home() {
   const [itemActive, setItemActive] = useState<number>(1);
   const countItems = 5;
+
+  const onPrev = () => {
+    setItemActive(itemActive - 1);
+    if (itemActive === 1) setItemActive(countItems);
+  };
+
+  const onNext = () => {
+    setItemActive(itemActive + 1);
+    if (itemActive >= countItems) setItemActive(1);
+  };
 
   return (
     <div className="h-screen relative">
@@ -51,6 +62,8 @@ export default function Home() {
           desc="Una camioneta robusta y versátil, diseñada para el trabajo duro y la aventura al aire libre."
         />
       </ul>
+
+      <Arrows onClickNext={onNext} onClickPrev={onPrev} />
     </div>
   );
 }
