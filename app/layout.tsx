@@ -1,8 +1,9 @@
 import { ReactNode } from "react";
 
 import type { Metadata } from "next";
-
 import { Inter } from "next/font/google";
+
+import Header from "@/components/widgtes/header";
 
 import "./globals.css";
 
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
   description: "Slider",
 };
 
-export default function RootLayout({
+export default function RootLayout({ 
   children,
 }: Readonly<{
   children: ReactNode;
@@ -21,6 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`bg-black text-gray-400 ${inter.className}`}>
+        <Header />
         {children}
       </body>
     </html>
